@@ -15,20 +15,34 @@ uri="http://java.sun.com/jsp/jstl/core" %>
       }
       body {
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        background: white;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         min-height: 100vh;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        padding: 20px;
+        padding-top: 80px;
+        padding-bottom: 20px;
+        padding-left: 20px;
+        padding-right: 20px;
       }
-      .page-title {
-        font-size: 48px;
-        font-weight: bold;
-        color: #667eea;
-        margin-bottom: 30px;
+      .fixed-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: #fff8dc;
+        color: #333;
+        padding: 20px;
         text-align: center;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+      }
+      .fixed-header h1 {
+        font-size: 32px;
+        font-weight: bold;
+        margin: 0;
+        color: #333;
       }
       .container {
         background: white;
@@ -40,13 +54,14 @@ uri="http://java.sun.com/jsp/jstl/core" %>
         text-align: center;
       }
       h1 {
-        color: #667eea;
+        color: #333;
         margin-bottom: 30px;
         font-size: 32px;
+        white-space: nowrap;
       }
       .welcome {
         margin-bottom: 30px;
-        color: #666;
+        color: #333;
       }
       .btn {
         display: inline-block;
@@ -71,9 +86,11 @@ uri="http://java.sun.com/jsp/jstl/core" %>
     </style>
   </head>
   <body>
-    <h1 class="page-title">HỆ THỐNG RẠP CHIẾU PHIM</h1>
+    <div class="fixed-header">
+      <h1>HỆ THỐNG RẠP CHIẾU PHIM</h1>
+    </div>
     <div class="container">
-      <h1>ManagerHomeView</h1>
+      <h1>Trang chủ Nhân viên quản lý</h1>
       <div class="welcome">
         <p>Xin chào, <strong>${sessionScope.user.name}</strong></p>
         <p>Quản lý hệ thống rạp chiếu phim</p>

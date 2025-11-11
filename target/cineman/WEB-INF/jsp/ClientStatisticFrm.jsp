@@ -16,15 +16,30 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
       }
       body {
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        background-color: white;
-        padding: 20px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding-top: 80px;
+        padding-bottom: 20px;
+        padding-left: 20px;
+        padding-right: 20px;
+        min-height: 100vh;
       }
-      .page-title {
-        font-size: 48px;
-        font-weight: bold;
-        color: #667eea;
-        margin-bottom: 30px;
+      .fixed-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: #fff8dc;
+        color: #333;
+        padding: 20px;
         text-align: center;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+      }
+      .fixed-header h1 {
+        font-size: 32px;
+        font-weight: bold;
+        margin: 0;
+        color: #333;
       }
       .container {
         max-width: 1200px;
@@ -35,7 +50,7 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
       }
       h1 {
-        color: #667eea;
+        color: #333;
         margin-bottom: 30px;
       }
       .filter-box {
@@ -72,6 +87,9 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
         text-align: left;
         border: 1px solid #ddd;
       }
+      td.text-right {
+        text-align: right;
+      }
       th {
         background-color: #667eea;
         color: white;
@@ -95,9 +113,11 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
     </style>
   </head>
   <body>
-    <h1 class="page-title">HỆ THỐNG RẠP CHIẾU PHIM</h1>
+    <div class="fixed-header">
+      <h1>HỆ THỐNG RẠP CHIẾU PHIM</h1>
+    </div>
     <div class="container">
-      <h1>ClientStatisticView</h1>
+      <h1>Thống kê khách hàng theo doanh thu</h1>
 
       <!-- Filter form theo diagram -->
       <form
@@ -121,7 +141,7 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
             <tr>
               <th>Tên khách hàng</th>
               <th>Số điện thoại</th>
-              <th>Tổng doanh thu</th>
+              <th style="text-align: right">Tổng doanh thu</th>
             </tr>
           </thead>
           <tbody>
@@ -131,7 +151,7 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
               >
                 <td>${stat.name}</td>
                 <td>${stat.phoneNumber}</td>
-                <td>
+                <td class="text-right">
                   <fmt:formatNumber
                     value="${stat.totalRevenue}"
                     type="number"

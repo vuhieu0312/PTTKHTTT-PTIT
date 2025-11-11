@@ -14,15 +14,30 @@ pageEncoding="UTF-8"%>
       }
       body {
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        background-color: white;
-        padding: 20px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding-top: 80px;
+        padding-bottom: 20px;
+        padding-left: 20px;
+        padding-right: 20px;
+        min-height: 100vh;
       }
-      .page-title {
-        font-size: 48px;
-        font-weight: bold;
-        color: #667eea;
-        margin-bottom: 30px;
+      .fixed-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: #fff8dc;
+        color: #333;
+        padding: 20px;
         text-align: center;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+      }
+      .fixed-header h1 {
+        font-size: 32px;
+        font-weight: bold;
+        margin: 0;
+        color: #333;
       }
       .container {
         max-width: 1000px;
@@ -33,7 +48,7 @@ pageEncoding="UTF-8"%>
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
       }
       h1 {
-        color: #667eea;
+        color: #333;
         margin-bottom: 30px;
       }
       .search-box {
@@ -101,11 +116,13 @@ pageEncoding="UTF-8"%>
     </style>
   </head>
   <body>
-    <h1 class="page-title">HỆ THỐNG RẠP CHIẾU PHIM</h1>
+    <div class="fixed-header">
+      <h1>HỆ THỐNG RẠP CHIẾU PHIM</h1>
+    </div>
     <div class="container">
-      <h1>SearchMovieView</h1>
+      <h1>Tìm kiếm phim</h1>
 
-      <!-- Search form: AJAX call to servlet -->
+      <!-- ajax gọi servlet -->
       <div class="search-box">
         <input type="text" id="txtMovieName" placeholder="Nhập tên phim..." />
         <button type="button" id="btnSearch" onclick="searchMovie()">
@@ -113,7 +130,6 @@ pageEncoding="UTF-8"%>
         </button>
       </div>
 
-      <!-- Results table -->
       <table id="tblResults" style="display: none">
         <thead>
           <tr>
@@ -186,12 +202,15 @@ pageEncoding="UTF-8"%>
             const tr = document.createElement("tr");
             tr.onclick = () => viewDetail(movie.id);
 
-            // Column 1: ID Phim
-            // Column 2: Tên phim
-            // Column 3: Ngày khởi chiếu (format dd/MM/yyyy)
             const releaseDateText = formatDate(movie.releaseDate);
             tr.innerHTML =
-              "<td>" + movie.id + "</td><td>" + movie.name + "</td><td>" + releaseDateText + "</td>";
+              "<td>" +
+              movie.id +
+              "</td><td>" +
+              movie.name +
+              "</td><td>" +
+              releaseDateText +
+              "</td>";
             tbody.appendChild(tr);
           });
         } else {
@@ -202,8 +221,10 @@ pageEncoding="UTF-8"%>
       }
 
       function viewDetail(movieId) {
-        // Chuyển hướng đến trang chi tiết phim
-        window.location.href = "${pageContext.request.contextPath}/movie?action=viewDetail&idMovie=" + movieId;
+        // chuyển hướng đến trang chi tiết phim
+        window.location.href =
+          "${pageContext.request.contextPath}/movie?action=viewDetail&idMovie=" +
+          movieId;
       }
 
       function formatDate(dateStr) {
