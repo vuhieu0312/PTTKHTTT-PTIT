@@ -73,6 +73,15 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
         color: white;
         border: 1px solid #667eea;
       }
+      th.id-column,
+      td.id-column {
+        width: 100px;
+        text-align: center;
+      }
+      th.date-column,
+      td.date-column {
+        text-align: center;
+      }
       .total-row {
         font-weight: bold;
         background-color: #f8f8f8;
@@ -109,8 +118,8 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
         <table>
           <thead>
             <tr>
-              <th>Mã hóa đơn</th>
-              <th>Ngày tạo</th>
+              <th class="id-column">Mã HĐ</th>
+              <th class="date-column">Ngày tạo</th>
               <th style="text-align: right">Tổng tiền (VNĐ)</th>
             </tr>
           </thead>
@@ -118,8 +127,8 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
             <c:set var="totalSum" value="0" />
             <c:forEach var="bill" items="${ListBill}">
               <tr>
-                <td>${bill.id}</td>
-                <td>
+                <td class="id-column">${bill.id}</td>
+                <td class="date-column">
                   <fmt:formatDate
                     value="${bill.createDate}"
                     pattern="dd/MM/yyyy"

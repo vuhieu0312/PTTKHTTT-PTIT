@@ -89,6 +89,15 @@ pageEncoding="UTF-8"%>
         color: white;
         border: 1px solid #667eea;
       }
+      th.id-column,
+      td.id-column {
+        width: 80px;
+        text-align: center;
+      }
+      th.date-column,
+      td.date-column {
+        text-align: center;
+      }
       tr:hover {
         background-color: #f5f5ff;
         cursor: pointer;
@@ -133,9 +142,9 @@ pageEncoding="UTF-8"%>
       <table id="tblResults" style="display: none">
         <thead>
           <tr>
-            <th>ID Phim</th>
+            <th class="id-column">ID</th>
             <th>Tên phim</th>
-            <th>Ngày khởi chiếu</th>
+            <th class="date-column">Ngày khởi chiếu</th>
           </tr>
         </thead>
         <tbody id="movieResults"></tbody>
@@ -204,11 +213,11 @@ pageEncoding="UTF-8"%>
 
             const releaseDateText = formatDate(movie.releaseDate);
             tr.innerHTML =
-              "<td>" +
+              "<td class='id-column'>" +
               movie.id +
               "</td><td>" +
               movie.name +
-              "</td><td>" +
+              "</td><td class='date-column'>" +
               releaseDateText +
               "</td>";
             tbody.appendChild(tr);

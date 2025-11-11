@@ -95,6 +95,11 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
         color: white;
         border: 1px solid #667eea;
       }
+      th.id-column,
+      td.id-column {
+        width: 100px;
+        text-align: center;
+      }
       tr:hover {
         background-color: #f5f5ff;
         cursor: pointer;
@@ -136,6 +141,7 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
         <table>
           <thead>
             <tr>
+              <th class="id-column">ID</th>
               <th>Tên khách hàng</th>
               <th>Số điện thoại</th>
               <th style="text-align: right">Tổng doanh thu</th>
@@ -146,6 +152,7 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
               <tr
                 onclick="location.href='${pageContext.request.contextPath}/bill?clientId=${stat.clientId}&startDate=${startDate}&endDate=${endDate}'"
               >
+                <td class="id-column">${stat.clientId}</td>
                 <td>${stat.name}</td>
                 <td>${stat.phoneNumber}</td>
                 <td class="text-right">
